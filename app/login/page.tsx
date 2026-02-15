@@ -18,9 +18,15 @@ export default function LoginPage() {
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
       <div className="w-full max-w-md p-8">
         <div className="flex justify-center mb-8">
-          <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-lg">
-            <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5v14l7-7 7 7V5a2 2 0 00-2-2H7a2 2 0 00-2 2z" />
+          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24">
+              {/* Bookmark shape */}
+              <path d="M6 3h12c1.1 0 2 .9 2 2v16l-8-4.5L6 21V5c0-1.1.9-2 2-2z" fill="currentColor" opacity="0.8"/>
+              {/* Smart sparkle/star inside */}
+              <g transform="translate(12, 10)">
+                <circle cx="0" cy="0" r="1.5" fill="white"/>
+                <path d="M0,-3 L0.6,-1.2 L2.4,-0.6 L1.2,0.6 L1.8,2.4 L0,1.8 L-1.2,2.4 L-0.6,0.6 L-2.4,-0.6 L-0.6,-1.2 Z" fill="white" opacity="0.9"/>
+              </g>
             </svg>
           </div>
         </div>

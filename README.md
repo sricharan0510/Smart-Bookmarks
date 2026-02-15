@@ -2,6 +2,8 @@
 
 A simple, fast bookmark manager with real-time sync across tabs. Built with Next.js, TypeScript, and Supabase. 
 
+**Live Demo:** [https://smart-bookmarks-xi.vercel.app/login](https://smart-bookmarks-xi.vercel.app/login)
+
 ## Features
 
 - **Google Login** - Quick sign-in with OAuth
