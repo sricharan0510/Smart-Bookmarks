@@ -61,3 +61,17 @@ create table bookmarks (
 **Real-time Updates** - Uses Supabase's postgres_changes to sync bookmarks instantly across tabs. Much cleaner than managing multiple listeners.
 
 **Auth Flow** - After Google login, the callback route exchanges the auth code for a session cookie, keeping you logged in across all components.
+
+## Challenges & Solutions
+
+**Lost subscriptions on component remount**
+The realtime subscription was being created fresh every render, causing duplicate listeners and memory leaks. Fixed by moving subscription to a layout effect and storing the unsubscribe function to clean up on unmount.
+
+**Auth state not persisting after refresh**
+Browser wouldn't persist session after page reload because we relied on client-side state. Solved by storing session in a cookie and validating it server-side in middleware, so login state comes back automatically.
+
+**Race conditions when clicking bookmarks rapidly**
+Quick sequential deletes/adds would sometimes leave the UI out of sync. Added optimistic updates so the UI responds instantly, with a fallback refetch if the server action fails.
+
+**Supabase connection reset on vercel cold starts**
+Realtime subscriptions would die on serverless cold starts. Now we re-establish subscriptions on focus using `visibilitychange` events, ensuring you stay synced even after long idle periods.
